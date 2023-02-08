@@ -15,20 +15,19 @@ import java.util.Optional;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class ArticleServiceUnitTest {
-
     @Autowired
     private ArticleService articleService;
 
     @Test
     public void testHibernateCreatesInitialRecords() {
-        List<Article> articles = articleService.list();
+        List<Article> articles = this.articleService.list();
 
         Assert.assertEquals(articles.size(), 3);
     }
 
     @Test
-    public void testArticleServiceGetArticlebyNumber() {
-        Optional<Article> articleOpt = articleService.byArticleNumber(0);
+    public void testArticleServiceGetArticleByNumber() {
+        Optional<Article> articleOpt = this.articleService.byArticleNumber(0);
         var article = articleOpt.get();
 
         Assert.assertEquals(article.getArticleNumber(), 0);
