@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.example.car_shop.Constants.API_PATH;
 import static com.example.car_shop.Constants.ORDER_PATH;
