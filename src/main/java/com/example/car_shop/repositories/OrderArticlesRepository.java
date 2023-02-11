@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface OrderArticlesRepository extends JpaRepository<OrderArticles, Long> {
+    @Query("select o from OrderArticles o where o.order.link = ?1")
+    List<OrderArticles> findByOrder_Link(String link);
     @Query("select o from OrderArticles o where o.order.id = ?1")
     List<OrderArticles> findByOrder_Id(long id);
 }

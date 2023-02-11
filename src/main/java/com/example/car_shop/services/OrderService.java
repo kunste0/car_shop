@@ -30,10 +30,14 @@ public class OrderService {
         return this.orderArticlesRepository.findByOrder_Id(id);
     }
 
-    public void createOrder(List<Long> articleNumbers) {
+    public List<OrderArticles> getArticleNumbersInOrderWithLink(String link) {
+        return this.orderArticlesRepository.findByOrder_Link(link);
+    }
+
+    public void createOrder(List<Long> articleNumbers, String link) {
         if (articleNumbers.size() < 1) return; // prevents adding empty orders
 
-        var order = new Order();
+        var order = new Order().setLink(link);
         this.orderRepository.saveAndFlush(order);
 
         var orderArticles = articleNumbers.stream().map(num -> {
