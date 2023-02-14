@@ -19,11 +19,11 @@ public class OrderService {
     private OrderArticlesRepository orderArticlesRepository;
 
     public List<Order> list() {
-        return orderRepository.findAll();
+        return this.orderRepository.findAll();
     }
 
     public Optional<Order> getOrderById(long id) {
-        return orderRepository.findById(id);
+        return this.orderRepository.findById(id);
     }
 
     public List<OrderArticles> getArticleNumbersInOrderWithId(long id) {
@@ -35,7 +35,7 @@ public class OrderService {
     }
 
     public void createOrder(List<Long> articleNumbers, String link) {
-        if (articleNumbers.size() < 1) return; // prevents adding empty orders
+        if (articleNumbers.isEmpty()) return; // prevents adding empty orders
 
         var order = new Order().setLink(link);
         this.orderRepository.saveAndFlush(order);
