@@ -39,9 +39,8 @@ public class ArticleController {
     public List<ArticleDTO> getArticles() {
         List<Article> result = this.articleService.list();
         var mapper = new ArticleDTOMapper();
-        var articles = result.stream()
-                .map(article -> mapper.mapModelToDto(article))
+        return result.stream()
+                .map(mapper::mapModelToDto)
                 .toList();
-        return articles;
     }
 }
