@@ -7,22 +7,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(SpringExtension.class)
-public class ArticleServiceUnitTest {
+public class ArticleServiceTests {
     @MockBean
     private ArticleService articleService;
 
     @Test
     public void testArticleServiceGetAllArticles() {
+        final var expected = 1;
         Mockito.when(this.articleService.list()).thenReturn(List.of(new Article()));
         List<Article> articles = this.articleService.list();
 
-        Assertions.assertEquals(articles.size(), 1);
+        Assertions.assertEquals(articles.size(), expected);
     }
 
     @Test
